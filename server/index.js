@@ -6,6 +6,9 @@ const connectDB = require('./src/configs/database.config')
 const app = express()
 const productRoute = require('./src/routes/product.route')
 const authRouter = require('./src/routes/auth.route')
+const quizzRoute = require('./src/routes/quizz.route')
+const userRouter = require('./src/routes/user.route')
+const questionRouter = require('./src/routes/question.route')
 const swaggerUi = require('swagger-ui-express'); 
 const swaggerSpecs = require('./src/configs/swagger.config'); // Nhập cấu hình Swagger
 const PORT = process.env.PORT || 8000
@@ -29,4 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', productRoute);
-app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
+// app.use('/api/auth', authRouter);
+app.use('/api/questions', questionRouter);
+app.use('/api/quizzs', quizzRoute);
